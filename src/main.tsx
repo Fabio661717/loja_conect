@@ -1,7 +1,7 @@
 // src/main.tsx - VERSÃO CORRIGIDA
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App.tsx";
 import "./index.css";
 import "./styles/globals.css";
 
@@ -10,22 +10,27 @@ const RootComponent: React.FC = () => {
     console.log("🚀 Aplicação inicializando...");
 
     const timer = setTimeout(() => {
-      if ('serviceWorker' in navigator && 'PushManager' in window) {
+      if ("serviceWorker" in navigator && "PushManager" in window) {
         // ✅ CORREÇÃO: Importar do caminho correto
-        import("./services/pushSubscription")
+        import("./services/pushSubscription.ts")
           .then(({ pushSubscriptionService }) => {
             console.log("🔔 Inicializando push notifications...");
             return pushSubscriptionService.initialize();
           })
-          .then(success => {
+          .then((success) => {
             if (success) {
               console.log("✅ Push notifications inicializadas com sucesso");
             } else {
-              console.warn("⚠️ Push notifications não puderam ser inicializadas");
+              console.warn(
+                "⚠️ Push notifications não puderam ser inicializadas",
+              );
             }
           })
           .catch((error) => {
-            console.warn("⚠️ Push notifications não disponíveis:", error.message);
+            console.warn(
+              "⚠️ Push notifications não disponíveis:",
+              error.message,
+            );
           });
       } else {
         console.log("ℹ️ Push notifications não suportadas neste navegador");
