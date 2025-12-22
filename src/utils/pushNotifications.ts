@@ -1,6 +1,17 @@
 // src/utils/pushNotifications.ts - VERSÃO CORRIGIDA
 import { createClient } from '@supabase/supabase-js';
 
+// Tipagem para import.meta.env do Vite
+interface ImportMetaEnv {
+  readonly VITE_SUPABASE_URL: string;
+  readonly VITE_SUPABASE_ANON_KEY: string;
+  // adicione outras variáveis VITE_... aqui se necessário
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
 // ✅ CORREÇÃO: Importar as variáveis de ambiente do Vite corretamente
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
