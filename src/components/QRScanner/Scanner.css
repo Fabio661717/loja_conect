@@ -1,0 +1,125 @@
+/* Scanner Styles */
+.camera-scanner-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#camera-scanner,
+#reader {
+  width: 100% !important;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+/* HTML5 QR Code Scanner Customization */
+.html5-qrcode-element {
+  background: #2563eb !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin: 5px !important;
+}
+
+.html5-qrcode-element:hover {
+  background: #1d4ed8 !important;
+}
+
+#html5-qrcode-button-camera-stop,
+#html5-qrcode-button-camera-start,
+#html5-qrcode-button-camera-permission {
+  background: #2563eb !important;
+}
+
+#html5-qrcode-button-camera-stop:hover,
+#html5-qrcode-button-camera-start:hover,
+#html5-qrcode-button-camera-permission:hover {
+  background: #1d4ed8 !important;
+}
+
+#html5-qrcode-button-camera-stop {
+  background: #dc2626 !important;
+}
+
+#html5-qrcode-button-camera-stop:hover {
+  background: #b91c1c !important;
+}
+
+/* Upload Area Styles */
+.upload-area {
+  transition: all 0.3s ease;
+}
+
+.upload-area.drag-over {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+/* Modal Animations */
+@keyframes fade-in-zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in {
+  animation: fade-in-zoom-in 0.2s ease-out;
+}
+
+/* Scanner Loading States */
+.scanning-overlay {
+  position: relative;
+}
+
+.scanning-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+  background-size: 200% 100%;
+  animation: scanning 2s linear infinite;
+  border-radius: 3px;
+}
+
+@keyframes scanning {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .camera-scanner-container {
+    max-width: 100%;
+  }
+
+  #camera-scanner,
+  #reader {
+    border-radius: 8px;
+    min-height: 250px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .scanning-overlay::after {
+    animation: none;
+  }
+}

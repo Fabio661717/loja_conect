@@ -1,0 +1,48 @@
+RELATÓRIO DE SEGURANÇA - LOJA CONECT
+==================================================
+Data: 2025-12-21T15:30:58.892Z
+
+PROBLEMAS CRÍTICOS:
+1. SUPABASE_SERVICE_ROLE_KEY não encontrada em .env.local
+2. 🚨 Variável privada SUPABASE_SERVICE_ROLE_KEY acessada no frontend: server.js
+3. 🚨 Variável privada SMTP_PASSWORD acessada no frontend: server.js
+4. 🚨 Variável privada SMTP_USER acessada no frontend: server.js
+5. 🚨 Variável privada STRIPE_WEBHOOK_SECRET acessada no frontend: server.js
+6. 🚨 Variável privada SUPABASE_SERVICE_ROLE_KEY acessada no frontend: sendPush.ts
+7. 🚨 Variável privada SUPABASE_SERVICE_ROLE_KEY acessada no frontend: supabaseClient.ts
+8. 🚨 Variável privada SUPABASE_SERVICE_ROLE_KEY acessada no frontend: check-security.ts
+
+AVISOS:
+1. SMTP_PASSWORD não encontrada em .env.local
+2. SMTP_USER não encontrada em .env.local
+3. ENCRYPTION_KEY não encontrada em .env.local
+4. HASH_SALT não encontrada em .env.local
+5. JWT_SECRET não encontrada em .env.local
+6. WHATSAPP_API_TOKEN não encontrada em .env.local
+7. STRIPE_SECRET_KEY não encontrada em .env.local
+8. STRIPE_WEBHOOK_SECRET não encontrada em .env.local
+9. ONESIGNAL_API_KEY não encontrada em .env.local
+10. DATABASE_PASSWORD não encontrada em .env.local
+11. SUPABASE_DB_PASSWORD não encontrada em .env.local
+12. Pacote de segurança não instalado: bcryptjs
+13. Pacote de segurança não instalado: jsonwebtoken
+14. Possível uso de SERVICE_ROLE_KEY em arquivo frontend: server.js
+15. Possível uso de SERVICE_ROLE_KEY em arquivo frontend: sendPush.ts
+16. Possível uso de SERVICE_ROLE_KEY em arquivo frontend: supabaseClient.ts
+17. Possível uso de SERVICE_ROLE_KEY em arquivo frontend: check-security.ts
+
+AÇÕES RECOMENDADAS:
+1. ROLL da SERVICE_ROLE_KEY:
+   - Acesse: https://supabase.com/dashboard/project/fhugpbgprcavflcudnsg/settings/api
+   - Clique em "ROLL" na SERVICE_ROLE_KEY
+   - Copie a nova chave
+
+2. Corrija os arquivos .env:
+   - Variáveis PRIVADAS (backend) → .env.local
+   - Variáveis PÚBLICAS (frontend) → .env
+
+3. Para TypeScript:
+   - Crie arquivo env.d.ts com tipos
+   - Separe clientes frontend/backend
+   - Use import.meta.env no frontend
+   - Use process.env no backend
